@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-academy
+    environment:
+      POSTGRES_DB: academy
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./src/main/resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/main/resources/seed.sql:/docker-entrypoint-initdb.d/seed.sql
